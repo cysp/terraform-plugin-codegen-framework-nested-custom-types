@@ -1,0 +1,12 @@
+{
+    "$schema": "https://raw.githubusercontent.com/hashicorp/terraform-plugin-codegen-spec/main/spec/v0.1/schema.json",
+    "version": "0.1",
+    "provider": {
+        "name": "provider",
+        "schema": {
+            "attributes": []
+        }
+    },
+    "resources": [],
+    "datasources": []
+}
