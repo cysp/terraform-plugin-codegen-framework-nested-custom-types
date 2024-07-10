@@ -15,7 +15,14 @@
                     {
                         "name": "json",
                         "string": {
-                            "computed_optional_required": "optional"
+                            "computed_optional_required": "optional",
+                            "custom_type": {
+                                "import": {
+                                    "path": "github.com/hashicorp/terraform-plugin-framework-jsontypes/jsontypes"
+                                },
+                                "type": "jsontypes.NormalizedType{}",
+                                "value_type": "jsontypes.Normalized"
+                            }
                         }
                     },
                     {
@@ -26,7 +33,14 @@
                                 {
                                     "name": "json",
                                     "string": {
-                                        "computed_optional_required": "optional"
+                                        "computed_optional_required": "optional",
+                                        "custom_type": {
+                                            "import": {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-jsontypes/jsontypes"
+                                            },
+                                            "type": "jsontypes.NormalizedType{}",
+                                            "value_type": "jsontypes.Normalized"
+                                        }
                                     }
                                 }
                             ]
@@ -41,7 +55,14 @@
                                     {
                                         "name": "json",
                                         "string": {
-                                            "computed_optional_required": "optional"
+                                            "computed_optional_required": "optional",
+                                            "custom_type": {
+                                                "import": {
+                                                    "path": "github.com/hashicorp/terraform-plugin-framework-jsontypes/jsontypes"
+                                                },
+                                                "type": "jsontypes.NormalizedType{}",
+                                                "value_type": "jsontypes.Normalized"
+                                            }
                                         }
                                     }
                                 ]

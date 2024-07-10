@@ -5,6 +5,7 @@ package resource_resource
 import (
 	"context"
 	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework-jsontypes/jsontypes"
 	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -19,13 +20,15 @@ func ResourceResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"json": schema.StringAttribute{
-				Optional: true,
+				CustomType: jsontypes.NormalizedType{},
+				Optional:   true,
 			},
 			"list_nested": schema.ListNestedAttribute{
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"json": schema.StringAttribute{
-							Optional: true,
+							CustomType: jsontypes.NormalizedType{},
+							Optional:   true,
 						},
 					},
 					CustomType: ListNestedType{
@@ -39,7 +42,8 @@ func ResourceResourceSchema(ctx context.Context) schema.Schema {
 			"single_nested": schema.SingleNestedAttribute{
 				Attributes: map[string]schema.Attribute{
 					"json": schema.StringAttribute{
-						Optional: true,
+						CustomType: jsontypes.NormalizedType{},
+						Optional:   true,
 					},
 				},
 				CustomType: SingleNestedType{
@@ -54,9 +58,9 @@ func ResourceResourceSchema(ctx context.Context) schema.Schema {
 }
 
 type ResourceModel struct {
-	Json         types.String      `tfsdk:"json"`
-	ListNested   types.List        `tfsdk:"list_nested"`
-	SingleNested SingleNestedValue `tfsdk:"single_nested"`
+	Json         jsontypes.Normalized `tfsdk:"json"`
+	ListNested   types.List           `tfsdk:"list_nested"`
+	SingleNested SingleNestedValue    `tfsdk:"single_nested"`
 }
 
 var _ basetypes.ObjectTypable = ListNestedType{}
