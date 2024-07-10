@@ -98,12 +98,12 @@ func (t ListNestedType) ValueFromObject(ctx context.Context, in basetypes.Object
 		return nil, diags
 	}
 
-	jsonVal, ok := jsonAttribute.(basetypes.StringValue)
+	jsonVal, ok := jsonAttribute.(jsontypes.Normalized)
 
 	if !ok {
 		diags.AddError(
 			"Attribute Wrong Type",
-			fmt.Sprintf(`json expected to be basetypes.StringValue, was: %T`, jsonAttribute))
+			fmt.Sprintf(`json expected to be jsontypes.Normalized, was: %T`, jsonAttribute))
 	}
 
 	if diags.HasError() {
@@ -189,12 +189,12 @@ func NewListNestedValue(attributeTypes map[string]attr.Type, attributes map[stri
 		return NewListNestedValueUnknown(), diags
 	}
 
-	jsonVal, ok := jsonAttribute.(basetypes.StringValue)
+	jsonVal, ok := jsonAttribute.(jsontypes.Normalized)
 
 	if !ok {
 		diags.AddError(
 			"Attribute Wrong Type",
-			fmt.Sprintf(`json expected to be basetypes.StringValue, was: %T`, jsonAttribute))
+			fmt.Sprintf(`json expected to be jsontypes.Normalized, was: %T`, jsonAttribute))
 	}
 
 	if diags.HasError() {
@@ -275,7 +275,7 @@ func (t ListNestedType) ValueType(ctx context.Context) attr.Value {
 var _ basetypes.ObjectValuable = ListNestedValue{}
 
 type ListNestedValue struct {
-	Json  basetypes.StringValue `tfsdk:"json"`
+	Json  jsontypes.Normalized `tfsdk:"json"`
 	state attr.ValueState
 }
 
@@ -285,7 +285,7 @@ func (v ListNestedValue) ToTerraformValue(ctx context.Context) (tftypes.Value, e
 	var val tftypes.Value
 	var err error
 
-	attrTypes["json"] = basetypes.StringType{}.TerraformType(ctx)
+	attrTypes["json"] = jsontypes.NormalizedType{}.TerraformType(ctx)
 
 	objectType := tftypes.Object{AttributeTypes: attrTypes}
 
@@ -331,7 +331,7 @@ func (v ListNestedValue) ToObjectValue(ctx context.Context) (basetypes.ObjectVal
 	var diags diag.Diagnostics
 
 	attributeTypes := map[string]attr.Type{
-		"json": basetypes.StringType{},
+		"json": jsontypes.NormalizedType{},
 	}
 
 	if v.IsNull() {
@@ -383,7 +383,7 @@ func (v ListNestedValue) Type(ctx context.Context) attr.Type {
 
 func (v ListNestedValue) AttributeTypes(ctx context.Context) map[string]attr.Type {
 	return map[string]attr.Type{
-		"json": basetypes.StringType{},
+		"json": jsontypes.NormalizedType{},
 	}
 }
 
@@ -422,12 +422,12 @@ func (t SingleNestedType) ValueFromObject(ctx context.Context, in basetypes.Obje
 		return nil, diags
 	}
 
-	jsonVal, ok := jsonAttribute.(basetypes.StringValue)
+	jsonVal, ok := jsonAttribute.(jsontypes.Normalized)
 
 	if !ok {
 		diags.AddError(
 			"Attribute Wrong Type",
-			fmt.Sprintf(`json expected to be basetypes.StringValue, was: %T`, jsonAttribute))
+			fmt.Sprintf(`json expected to be jsontypes.Normalized, was: %T`, jsonAttribute))
 	}
 
 	if diags.HasError() {
@@ -513,12 +513,12 @@ func NewSingleNestedValue(attributeTypes map[string]attr.Type, attributes map[st
 		return NewSingleNestedValueUnknown(), diags
 	}
 
-	jsonVal, ok := jsonAttribute.(basetypes.StringValue)
+	jsonVal, ok := jsonAttribute.(jsontypes.Normalized)
 
 	if !ok {
 		diags.AddError(
 			"Attribute Wrong Type",
-			fmt.Sprintf(`json expected to be basetypes.StringValue, was: %T`, jsonAttribute))
+			fmt.Sprintf(`json expected to be jsontypes.Normalized, was: %T`, jsonAttribute))
 	}
 
 	if diags.HasError() {
@@ -599,7 +599,7 @@ func (t SingleNestedType) ValueType(ctx context.Context) attr.Value {
 var _ basetypes.ObjectValuable = SingleNestedValue{}
 
 type SingleNestedValue struct {
-	Json  basetypes.StringValue `tfsdk:"json"`
+	Json  jsontypes.Normalized `tfsdk:"json"`
 	state attr.ValueState
 }
 
@@ -609,7 +609,7 @@ func (v SingleNestedValue) ToTerraformValue(ctx context.Context) (tftypes.Value,
 	var val tftypes.Value
 	var err error
 
-	attrTypes["json"] = basetypes.StringType{}.TerraformType(ctx)
+	attrTypes["json"] = jsontypes.NormalizedType{}.TerraformType(ctx)
 
 	objectType := tftypes.Object{AttributeTypes: attrTypes}
 
@@ -655,7 +655,7 @@ func (v SingleNestedValue) ToObjectValue(ctx context.Context) (basetypes.ObjectV
 	var diags diag.Diagnostics
 
 	attributeTypes := map[string]attr.Type{
-		"json": basetypes.StringType{},
+		"json": jsontypes.NormalizedType{},
 	}
 
 	if v.IsNull() {
@@ -707,6 +707,6 @@ func (v SingleNestedValue) Type(ctx context.Context) attr.Type {
 
 func (v SingleNestedValue) AttributeTypes(ctx context.Context) map[string]attr.Type {
 	return map[string]attr.Type{
-		"json": basetypes.StringType{},
+		"json": jsontypes.NormalizedType{},
 	}
 }
