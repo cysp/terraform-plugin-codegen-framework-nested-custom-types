@@ -7,6 +7,50 @@
             "attributes": []
         }
     },
-    "resources": [],
+    "resources": [
+        {
+            "name": "resource",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "json",
+                        "string": {
+                            "computed_optional_required": "optional"
+                        }
+                    },
+                    {
+                        "name": "single_nested",
+                        "single_nested": {
+                            "computed_optional_required": "optional",
+                            "attributes": [
+                                {
+                                    "name": "json",
+                                    "string": {
+                                        "computed_optional_required": "optional"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "list_nested",
+                        "list_nested": {
+                            "computed_optional_required": "optional",
+                            "nested_object": {
+                                "attributes": [
+                                    {
+                                        "name": "json",
+                                        "string": {
+                                            "computed_optional_required": "optional"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
     "datasources": []
 }
